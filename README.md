@@ -1,2 +1,2 @@
-# Minesweeper
-Litjaxvin
+# minesweeper-js
+Homework template for my students
