@@ -38,6 +38,7 @@ export class Minesweeper {
         }
 
         console.log(this.bomblocations)
+
     }
     
 
@@ -49,7 +50,8 @@ export class Minesweeper {
      * @return {number} amount of bombs
      */
     _calculateDefaultBombs() {
-        return 10;
+        let defaultbombs = 10;
+        return defaultbombs;
     }
 
     /**
@@ -83,11 +85,11 @@ export class Minesweeper {
      * @return {boolean}
      */
     isBombOnPosition(x, y) {
-        if(Coordinate)
-            return true;
-        else
-            return false;
-
+        for(let i = 0; i < this.bomblocations.length; i++) {        
+            if(this.bomblocations[i].x === x && this.bomblocations[i].y === y)
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -98,6 +100,10 @@ export class Minesweeper {
      * @param {number} y
      */
     reveal(x, y) {
+        if(this.isBombOnPosition(x,y) === true) {
+            this.isGameOver = true;
+        }
+        if(this.didLoose === false)
         this.array[y][x] = field.visible;
     }
 
@@ -137,7 +143,8 @@ export class Minesweeper {
      * @returns {boolean}
      */
     didLoose() {
-        return false;
+        if(this.isGameOver == true)
+            return true;
     }
 
     /**
@@ -145,7 +152,7 @@ export class Minesweeper {
      * @return {number}
      */
     getRemainingBombCount() {
-        return 10;
+        return 5;
     }
 
 }
